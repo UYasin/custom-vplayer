@@ -34,18 +34,21 @@ function setVideoProgress() {
 
 // stop video
 const stopVideo = () => {
-  return "stopping video";
+  video.currentTime = 0;
+  video.pause();
+  play.innerHTML = '<i class="fa fa-play fa-2x"></i>';
 };
 
 //Event listeners
 
 video.addEventListener("click", toggleVideoStatus);
-video.addEventListener("pause", updatePlayIcon);
-video.addEventListener("play", updatePlayIcon);
-video.addEventListener("timeupdate", updateProgress);
-
 play.addEventListener("click", toggleVideoStatus);
 
+video.addEventListener("pause", updatePlayIcon);
+video.addEventListener("play", updatePlayIcon);
+
 stop.addEventListener("click", stopVideo);
+
+video.addEventListener("timeupdate", updateProgress);
 
 progress.addEventListener("change", setVideoProgress);
