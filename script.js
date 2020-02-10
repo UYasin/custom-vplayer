@@ -24,12 +24,24 @@ const updatePlayIcon = () => {
 
 //update progress
 const updateProgress = () => {
-  return "updated progress";
+  progress.value = (video.currentTime / video.duration) * 100;
+
+  //get minutes
+  let mins = Math.floor(video.currentTime / 60);
+  if (mins > -1) {
+    mins = "0" + String(mins);
+  }
+  let secs = Math.floor(video.currentTime % 60);
+  if (secs > -1) {
+    secs = "0" + String(secs);
+  }
+
+  timestamp.innerHTML = `${mins}:${secs}`;
 };
 
 //set video time to progeress
 function setVideoProgress() {
-  return "setting v. progress";
+  video.currentTime = (+progress.value * video.duration) / 100;
 }
 
 // stop video
